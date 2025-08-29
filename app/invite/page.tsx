@@ -106,7 +106,7 @@ export default function InvitePage() {
         <div className="flex flex-col gap-10">
           {[
             { title: 'Pengajuan Judul', desc: 'Mengusulkan topik penelitian dan mengumpulkan berkas.', date: '13 September 2024', img: '/photo/pengajuan judul.jpeg' },
-            { title: 'ACC Judul', desc: 'Judul disetujui oleh pembimbing/kaprodi.', date: '3 Oktober 2024', img: '/photo/ACC judul.jpeg' },
+            { title: 'ACC Judul', desc: 'Judul disetujui oleh pembimbing/kaprodi.', date: '3 Oktober 2024', img: '/photo/ACC Judul.jpeg' },
             { title: 'Bimbingan Pertama', desc: 'Memulai bimbingan dan penajaman metodologi.', date: '24 Oktober 2024', img: '/photo/Bimbingan pertama.jpeg' },
             { title: 'Seminar Proposal', desc: 'Mempresentasikan rencana penelitian di hadapan penguji.', date: '18 Maret 2025', img: '/photo/Seminar Proposal.jpeg' },
             { title: 'Sidang Munaqasyah', desc: 'Pertanggungjawaban hasil penelitian dan revisi akhir.', date: '11 Agustus 2025', img: '/photo/Sidang Munaqasyah.jpeg' },

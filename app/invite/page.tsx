@@ -1,10 +1,24 @@
-// app/page.tsx
-export default function HomePage() {
+// app/invite/page.tsx
+"use client";
+
+import { useSearchParams } from 'next/navigation';
+ 
+
+export default function InvitePage() {
+  const searchParams = useSearchParams();
+  const guestName = searchParams.get('to') || 'Tamu Undangan';
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-100 to-white flex flex-col items-center p-4">
+      {/* Bagian untuk Nama Tamu Undangan */}
+      <div className="text-center my-4">
+        <p className="text-lg text-gray-500">Kepada Yth:</p>
+        <h3 className="text-3xl font-bold text-gray-800">{guestName}</h3>
+      </div>
+      
       {/* Hero dengan background carousel di belakang header */}
       <section className="w-full max-w-5xl relative mb-6" data-aos="zoom-in">
-        <div className="hero-carousel h-64 sm:h-80 md:h-96 ring-1 ring-pink-100 dark:ring-gray-800">
+        <div className="hero-carousel h-64 sm:h-80 md:h-96 ring-1 ring-pink-100">
           <img src="/photo/Selebrasi.jpeg" alt="Carousel 1" className="slide" />
           <img src="/photo/Selebrasi (2).jpeg" alt="Carousel 2" className="slide" />
           <img src="/photo/Selebrasi Sempro.jpeg" alt="Carousel 3" className="slide" />
@@ -20,16 +34,16 @@ export default function HomePage() {
           </header>
         </div>
       </section>
-
+      
       {/* Detail Acara + Lokasi dalam satu frame */}
-      <section className="w-full max-w-5xl bg-pink-50 p-6 rounded-2xl shadow my-8 ring-1 ring-pink-100" data-aos="fade-up">
-        <h3 className="text-2xl font-semibold text-center mb-6 text-pink-900">Detail Acara & Lokasi</h3>
+      <section className="w-full max-w-5xl bg-pink-50 rounded-2xl shadow p-6 ring-1 ring-pink-100" data-aos="fade-up">
+        <h3 className="text-2xl font-semibold text-pink-900 mb-6 text-center">Detail Acara & Lokasi</h3>
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-xl p-5 bg-pink-50 border border-pink-100">
-            <h4 className="font-bold text-lg text-pink-800">Wisuda</h4>
-            <p className="mt-2 text-pink-900">Selasa, 28 Oktober 2025</p>
-            <p className="text-pink-900">14.00 WIB - Selesai</p>
-            <p className="text-pink-900 mt-2">Gedung Kuliah Bersama, Kampus 3 UIN Imam Bonjol Padang</p>
+            <h4 className="text-lg font-bold text-pink-800">Wisuda</h4>
+            <p className="text-gray-800 mt-1">Selasa, 28 Oktober 2025</p>
+            <p className="text-gray-800">14.00 WIB - Selesai</p>
+            <p className="text-gray-800 mt-2">Gedung Kuliah Bersama, Kampus 3 UIN Imam Bonjol Padang</p>
           </div>
           <div className="rounded-xl overflow-hidden ring-1 ring-pink-100 bg-white">
             <div className="aspect-video w-full">
@@ -55,9 +69,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Galeri */}
-      <section className="max-w-5xl w-full my-10" data-aos="fade-up">
-        <h3 className="text-2xl font-semibold text-center mb-6 text-pink-900">Galeri</h3>
+      <section className="w-full max-w-5xl mt-10" data-aos="fade-up">
+        <h3 className="text-2xl font-semibold text-pink-900 mb-6 text-center">Galeri</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {[
             "/photo/photo (1).jpeg",
@@ -79,8 +92,6 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-
-      
 
       {/* Timeline Perjalanan dengan foto, deskripsi, dan konektor */}
       <section className="w-full max-w-5xl mt-10 bg-pink-50 rounded-2xl shadow p-6 ring-1 ring-pink-100" data-aos="fade-up">
@@ -145,6 +156,20 @@ export default function HomePage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* Peta Lokasi */}
+      <section className="w-full max-w-5xl mt-10" data-aos="zoom-in">
+        <h3 className="text-2xl font-semibold text-pink-900 mb-4 text-center">Lokasi</h3>
+        <div className="aspect-video w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-pink-100">
+          <iframe
+            title="Peta Lokasi Wisuda"
+            src="https://www.google.com/maps?q=59QC%2BWV%20Balai%20Gadang%2C%20Kota%20Padang%2C%20Sumatera%20Barat&output=embed"
+            className="h-full w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
 

@@ -93,83 +93,42 @@ export default function InvitePage() {
         </div>
       </section>
 
-      {/* Timeline Perjalanan dengan foto, deskripsi, dan konektor */}
+      {/* Timeline Perjalanan dengan frame selang-seling */}
       <section className="w-full max-w-5xl mt-10 bg-pink-50 rounded-2xl shadow p-6 ring-1 ring-pink-100" data-aos="fade-up">
         <h3 className="text-2xl font-semibold text-pink-900 mb-8 text-center">Timeline Perjalanan</h3>
-        <div className="relative">
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-pink-200" />
+        <div className="flex flex-col gap-10">
           {[
-            { title: 'Pengajuan Judul', desc: 'Mengusulkan topik penelitian dan mengumpulkan berkas.', date: '13 September 2024', img: '/photo/photo (1).jpeg' },
-            { title: 'ACC Judul', desc: 'Judul disetujui oleh pembimbing/kaprodi.', date: '3 Oktober 2024', img: '/photo/photo (2).jpeg' },
-            { title: 'Bimbingan Pertama', desc: 'Memulai bimbingan dan penajaman metodologi.', date: '24 Oktober 2024', img: '/photo/photo (3).jpeg' },
-            { title: 'Seminar Proposal', desc: 'Mempresentasikan rencana penelitian di hadapan penguji.', date: '18 Maret 2025', img: '/photo/photo (5).jpeg' },
-            { title: 'Sidang Munaqasyah', desc: 'Pertanggungjawaban hasil penelitian dan revisi akhir.', date: '11 Agustus 2025', img: '/photo/photo (6).jpeg' },
+            { title: 'Pengajuan Judul', desc: 'Mengusulkan topik penelitian dan mengumpulkan berkas.', date: '13 September 2024', img: '/photo/pengajuan judul.jpeg' },
+            { title: 'ACC Judul', desc: 'Judul disetujui oleh pembimbing/kaprodi.', date: '3 Oktober 2024', img: '/photo/ACC judul.jpeg' },
+            { title: 'Bimbingan Pertama', desc: 'Memulai bimbingan dan penajaman metodologi.', date: '24 Oktober 2024', img: '/photo/Bimbingan pertama.jpeg' },
+            { title: 'Seminar Proposal', desc: 'Mempresentasikan rencana penelitian di hadapan penguji.', date: '18 Maret 2025', img: '/photo/Seminar Proposal.jpeg' },
+            { title: 'Sidang Munaqasyah', desc: 'Pertanggungjawaban hasil penelitian dan revisi akhir.', date: '11 Agustus 2025', img: '/photo/Sidang Munaqasyah.jpeg' },
             { title: 'Wisuda', desc: 'Perayaan kelulusan dan penetapan gelar.', date: '28 Oktober 2025', img: '/photo/Selebrasi.jpeg' },
           ].map((item, idx) => {
-            const isRight = idx % 2 === 1;
+            const isEven = idx % 2 === 0;
             return (
-              <div key={idx} className="relative mb-12 md:mb-16">
-                {/* Titik pada garis tengah */}
-                <span className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-5 w-5 rounded-full bg-pink-500 ring-4 ring-white" />
-                {/* Garis penghubung lengkung dari tengah ke kartu */}
-                <svg
-                  className={`hidden md:block absolute top-1/2 -translate-y-1/2 ${isRight ? 'left-1/2' : 'right-1/2'} pointer-events-none`}
-                  width="50%"
-                  height="80"
-                  viewBox="0 0 100 80"
-                  preserveAspectRatio="none"
-                >
-                  {isRight ? (
-                    <path d="M0 40 C 20 40, 30 80, 100 40" fill="none" stroke="#f0a5c7" strokeWidth="2" />
-                  ) : (
-                    <path d="M100 40 C 80 40, 70 80, 0 40" fill="none" stroke="#f0a5c7" strokeWidth="2" />
-                  )}
-                </svg>
-                <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 ${isRight ? '' : ''}`}>
-                  {/* Kartu kiri atau placeholder */}
-                  <div className={`${isRight ? 'order-2 md:order-1' : 'order-1'} `}>
-                    {!isRight && (
-                      <div className="rounded-xl ring-1 ring-pink-100 bg-white overflow-hidden">
-                        <img src={item.img} alt={item.title} className="w-full h-56 sm:h-64 object-contain bg-white" loading="lazy" />
-                        <div className="p-4">
-                          <h4 className="text-pink-900 font-semibold">{item.title}</h4>
-                          <p className="text-pink-600 font-medium text-sm mt-1">{item.date}</p>
-                          <p className="text-pink-900/80 mt-2 text-sm leading-relaxed">{item.desc}</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  {/* Kartu kanan atau placeholder */}
-                  <div className={`${isRight ? 'order-1 md:order-2' : 'order-2'}`}>
-                    {isRight && (
-                      <div className="rounded-xl ring-1 ring-pink-100 bg-white overflow-hidden">
-                        <img src={item.img} alt={item.title} className="w-full h-56 sm:h-64 object-contain bg-white" loading="lazy" />
-                        <div className="p-4">
-                          <h4 className="text-pink-900 font-semibold">{item.title}</h4>
-                          <p className="text-pink-600 font-medium text-sm mt-1">{item.date}</p>
-                          <p className="text-pink-900/80 mt-2 text-sm leading-relaxed">{item.desc}</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
+              <div
+                key={idx}
+                className={`flex flex-col md:flex-row items-center bg-white rounded-xl ring-1 ring-pink-100 overflow-hidden shadow-sm ${
+                  isEven ? '' : 'md:flex-row-reverse'
+                }`}
+              >
+                <div className="w-full md:w-1/2 h-56 sm:h-64 flex items-center justify-center bg-pink-50">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="object-contain h-full w-full"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="w-full md:w-1/2 p-6 flex flex-col justify-center">
+                  <h4 className="text-pink-900 font-semibold text-xl">{item.title}</h4>
+                  <p className="text-pink-600 font-medium text-sm mt-1">{item.date}</p>
+                  <p className="text-pink-900/80 mt-3 text-base leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             );
           })}
-        </div>
-      </section>
-
-      {/* Peta Lokasi */}
-      <section className="w-full max-w-5xl mt-10" data-aos="zoom-in">
-        <h3 className="text-2xl font-semibold text-pink-900 mb-4 text-center">Lokasi</h3>
-        <div className="aspect-video w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-pink-100">
-          <iframe
-            title="Peta Lokasi Wisuda"
-            src="https://www.google.com/maps?q=59QC%2BWV%20Balai%20Gadang%2C%20Kota%20Padang%2C%20Sumatera%20Barat&output=embed"
-            className="h-full w-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
         </div>
       </section>
 

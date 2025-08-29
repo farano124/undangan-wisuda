@@ -1,20 +1,27 @@
 // app/invite/page.tsx
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from 'next/navigation';
- 
 
-export default function InvitePage() {
+function GuestName() {
   const searchParams = useSearchParams();
   const guestName = searchParams.get('to') || 'Tamu Undangan';
+  return (
+    <div className="text-center my-4">
+      <p className="text-lg text-gray-500">Kepada Yth:</p>
+      <h3 className="text-3xl font-bold text-gray-800">{guestName}</h3>
+    </div>
+  );
+}
 
+export default function InvitePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-100 to-white flex flex-col items-center p-4">
       {/* Bagian untuk Nama Tamu Undangan */}
-      <div className="text-center my-4">
-        <p className="text-lg text-gray-500">Kepada Yth:</p>
-        <h3 className="text-3xl font-bold text-gray-800">{guestName}</h3>
-      </div>
+      <Suspense fallback={<div className="text-center my-4">Memuat undangan...</div>}>
+        <GuestName />
+      </Suspense>
       
       {/* Hero dengan background carousel di belakang header */}
       <section className="w-full max-w-5xl relative mb-6" data-aos="zoom-in">
